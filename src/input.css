@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Star Shape */
+.star {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  animation: twinkle 1.5s infinite ease-in-out;
+  opacity: 0.8;
+  clip-path: polygon(50% 0%, 61% 35%, 100% 50%, 61% 63%, 50% 100%, 39% 63%, 0 50%, 39% 35%);
+}
+
+/* Twinkling Animation */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ------------------------ */
+/* Shooting Star */
+/* Shooting Star Shape */
+.shooting-star {
+  position: absolute;
+  background-color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  shape-outside: polygon(50% 0%, 61% 35%, 100% 50%, 61% 63%, 50% 100%, 39% 63%, 0 50%, 39% 35%);
+  box-shadow: 0 0 10px 4px rgba(255, 255, 255, 0.8);
+  /* z-index: 1; */
+  animation: shooting-star 1s linear forwards;
+}
+
+/* Shooting Star Tail */
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100px; /* Tail length */
+  height: 4px; /* Tail thickness */
+  background: linear-gradient(to left, white, transparent);
+  transform: translateY(-50%);
+  transform-origin: right center;
+  shape-outside: none;
+} 
+
+/* Shooting Star Animation */
+@keyframes shooting-star {
+  0% { 
+    opacity: 1; 
+    transform: translate(0, 0) rotate(45deg); 
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% { 
+    opacity: 0; 
+    transform: translate(200px, 200px) rotate(45deg); 
+  }
+}
+
+/* ------------------------ */
+
+
+
+
+/* Floating Text Box */
+.floating-box {
+  position: absolute;
+  font: obitron, sans-serif;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(5px);
+}
